@@ -1,3 +1,7 @@
+# https://www.devdungeon.com/content/change-grub-bootloader-colors-image-timeout
+# https://www.youtube.com/watch?v=xAi2UfUkp_A
+
+##       OR
 
 ###		nano /etc/grub.d/05_menu_colors
 ###		chmod +x /etc/grub.d/05_menu_colors
