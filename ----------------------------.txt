@@ -1,0 +1,20 @@
+
+###		nano /etc/grub.d/05_menu_colors
+###		chmod +x /etc/grub.d/05_menu_colors
+
+if [ "x${GRUB_BACKGROUND}" != "x" ] ; then
+   if [ "x${GRUB_COLOR_NORMAL}" != "x" ] ; then
+     echo "set color_normal=${GRUB_COLOR_NORMAL}"
+   fi
+
+   if [ "x${GRUB_COLOR_HIGHLIGHT}" != "x" ] ; then
+     echo "set color_highlight=${GRUB_COLOR_HIGHLIGHT}"
+   fi
+fi
+
+
+
+###		nano /etc/default/grub
+
+export GRUB_COLOR_NORMAL="yellow/black"
+export GRUB_COLOR_HIGHLIGHT="cyan/blue"
