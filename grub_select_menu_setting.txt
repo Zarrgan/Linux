@@ -5,7 +5,6 @@
 
 ###		nano /etc/grub.d/05_menu_colors
 ###		chmod +x /etc/grub.d/05_menu_colors
-
 if [ "x${GRUB_BACKGROUND}" != "x" ] ; then
    if [ "x${GRUB_COLOR_NORMAL}" != "x" ] ; then
      echo "set color_normal=${GRUB_COLOR_NORMAL}"
@@ -18,7 +17,25 @@ fi
 
 
 
-###		nano /etc/default/grub
-
+###    nano /etc/default/grub
 export GRUB_COLOR_NORMAL="yellow/black"
 export GRUB_COLOR_HIGHLIGHT="cyan/blue"
+
+### GRUB CHANGE BOOT FONT SIZE
+### https://www.baeldung.com/linux/grub-menu-font-size
+#
+   avail fonts   
+    Ubuntu Mono
+    Consolas
+    Source Code Pro
+    DejaVu Sans Mono
+#
+   ### https://dejavu-fonts.github.io/Download.html
+   tar -xvf dejavu-fonts-ttf-2.37.tar.bz2
+   sudo grub-mkfont -s 24 -o /boot/grub/dejavu-sans-mono.pf2 dejavu-fonts-ttf-2.37/ttf/DejaVuSansMono.ttf
+   echo "GRUB_FONT=/boot/grub/dejavu-sans-mono.pf2" | sudo tee -a /etc/default/grub
+#
+   UPDATING GRUB Config
+   sudo grub-mkconfig -o /boot/grub/grub.cfg
+   sudo grub-mkconfig -o /boot/efi/EFI/{distro}/grub.cfg
+   # sudo grub-mkconfig -o /boot/efi/EFI/ubuntu/grub.cfg
